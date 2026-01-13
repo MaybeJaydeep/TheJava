@@ -241,7 +241,7 @@ Polymorphism → Shape ref = Circle obj
 
 ---
 
-## 5️⃣ Interview Comparison Table
+## 5️⃣ Concept vs Purpose Table
 
 | Concept      | Purpose          |
 | ------------ | ---------------- |
