@@ -156,6 +156,4 @@ String x = new String("Java").intern();
 
 ---
 
-✅ **GitHub Tip:** Keep this as `STRING.md` and link it from `README.md` for fast revision
-
 🚀 **End of Notes**
