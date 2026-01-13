@@ -251,7 +251,7 @@ Polymorphism → Shape ref = Circle obj
 
 ---
 
-## ⭐ Additional Interview Points
+## ⭐ Additional Points
 
 * Polymorphism depends on **inheritance**
 * Abstraction enables **loose coupling**
