@@ -1,7 +1,13 @@
+import java.util.logging.Logger;
 import java.util.Scanner;
 
 public class ExceptionDemo {
+    private static final Logger logger = Logger.getLogger(
+            ExceptionDemo.class.getName());
+
     public static void main(String[] args) {
+
+        
         try {
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter a number:");
@@ -9,7 +15,6 @@ public class ExceptionDemo {
             System.out.println(i);
         } catch (Exception e) {
             System.out.println("Please enter numeric data only....");
-            ;
         }
 
         try {
@@ -23,11 +28,21 @@ public class ExceptionDemo {
             int choice = sc.nextInt();
             System.out.println("Your desired element is: " + arr[choice - 1]);
 
-        } catch (Exception e) {
-            System.out.println("Available elements are 5 only, please enter valid index");
+        } catch (ArrayIndexOutOfBoundsException  | MatchException e) {
+            /*  e = new ArrayIndexOutOfBoundsException(); 
+                you cant change the object here becz implicitly its final 
+                System.out.println("Available elements are 5 only, please enter valid index");
+            */
+            logger.severe("There is problem in input given, please try again with valid input");
         }
-        System.out.println("Happily executed program");
-
+        catch(Exception e){
+            e = new ArrayIndexOutOfBoundsException();
+        //  Allowed here because there is only one class for exception mentioned
+            logger.severe("Exception occured, please try again");
+        }
+        finally{
+            System.out.println("Happily executed program");
+        }
     }
 
     /*
