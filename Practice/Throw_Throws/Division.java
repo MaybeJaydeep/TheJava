@@ -10,7 +10,6 @@ public class Division {
         int n1 = sc.nextInt();
         System.out.println("Enter number 2:");
         int n2 = sc.nextInt();
-
         if(n2 == 0){
             throw new ArithmeticException("Division by zero");
         }
