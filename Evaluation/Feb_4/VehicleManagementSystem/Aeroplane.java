@@ -2,9 +2,9 @@ package Evaluation.Feb_4.VehicleManagementSystem;
 
 public class Aeroplane implements Vehicle{
     private int VIN;
-    String manufacturer ;
-    String fuelType ;
-    int mileage;
+    private String manufacturer ;
+    private String fuelType ;
+    private int mileage;
     
     Aeroplane(){}
 
