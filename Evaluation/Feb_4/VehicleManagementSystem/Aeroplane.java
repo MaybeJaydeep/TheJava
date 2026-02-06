@@ -15,7 +15,7 @@ public class Aeroplane implements Vehicle{
         this.mileage = mileage;
     }
 
-    Altmeter Alt = () ->  System.out.println("+10,000 ft");
+    Altmeter alt = () ->  System.out.println("+10,000 ft");
 
     int getVIN(){
         return VIN;
@@ -36,7 +36,7 @@ public class Aeroplane implements Vehicle{
         if(getMileage()) throw new GetServicedException("Plane needs to be Serviced...");
         
         System.out.println("Plane started...");
-        Alt.height();
+        alt.height();
     
     }
 }
