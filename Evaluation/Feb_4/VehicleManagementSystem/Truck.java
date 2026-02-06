@@ -2,9 +2,9 @@ package Evaluation.Feb_4.VehicleManagementSystem;
 
 public class Truck implements Vehicle{
     private int VIN;
-    String manufacturer ;
-    String fuelType ;
-    int mileage;
+    private String manufacturer ;
+    private String fuelType ;
+    private int mileage;
 
     Truck(){}
 
