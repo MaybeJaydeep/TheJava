@@ -32,19 +32,20 @@ public class Student {
     public void insert() {
         System.out.print("Enter Student ID: ");
         studentID = input.nextInt();
+        input.nextLine(); // consume the remaining newline
 
         System.out.print("Enter Student Name: ");
-        name = input.next();
+        name = input.nextLine();
 
         System.out.print("Enter Student Grade: ");
-        grade = input.next();
+        grade = input.nextLine();
     }
 
     public void updateDetails() {
         System.out.print("Enter new name: ");
-        name = input.next();
+        name = input.nextLine();
 
         System.out.print("Enter new grade: ");
-        grade = input.next();
+        grade = input.nextLine();
     }
 }
