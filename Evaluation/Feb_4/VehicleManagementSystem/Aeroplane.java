@@ -8,9 +8,9 @@ public class Aeroplane implements Vehicle{
     
     Aeroplane(){}
 
-    Aeroplane(int VIN,String manufacterer,String fuelType, int mileage){
+    Aeroplane(int VIN,String manufacturer,String fuelType, int mileage){
         this.VIN = VIN;
-        this.manufacturer = manufacterer;
+        this.manufacturer = manufacturer;
         this.fuelType = fuelType;
         this.mileage = mileage;
     }
