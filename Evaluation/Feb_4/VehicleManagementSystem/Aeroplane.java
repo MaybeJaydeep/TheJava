@@ -17,7 +17,7 @@ public class Aeroplane implements Vehicle{
 
     Altmeter alt = () ->  System.out.println("+10,000 ft");
 
-    int getVIN(){
+    public int getVIN(){
         return VIN;
     }
 
