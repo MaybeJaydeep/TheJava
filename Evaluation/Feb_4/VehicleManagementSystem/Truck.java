@@ -39,10 +39,9 @@ public class Truck implements Vehicle{
         throw new GetServicedException("Get your truck serviced...");
     }
         System.out.println("Truck started...");
+        GPS gps = () ->  System.out.println("Latitude: 54.52665, Longitude: -88.83006");
         gps.gps();
     }
-
-    GPS gps = () ->  System.out.println("Latitude: 54.52665, Longitude: -88.83006");
     
 }
 
