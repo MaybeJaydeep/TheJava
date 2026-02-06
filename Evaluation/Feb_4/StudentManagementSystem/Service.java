@@ -7,6 +7,13 @@ public class Service {
     private ArrayList<Student> students = new ArrayList<>();
 
     public void addStudent(Student student) {
+        // Check for duplicate student ID before adding
+        for (Student existingStudent : students) {
+            if (existingStudent.getStudentID() == student.getStudentID()) {
+                System.out.println("Student ID already exists. Student not added.");
+                return;
+            }
+        }
         students.add(student);
         System.out.println("Student added successfully!");
     }
