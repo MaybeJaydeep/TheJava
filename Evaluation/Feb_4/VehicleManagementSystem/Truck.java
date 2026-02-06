@@ -19,7 +19,7 @@ public class Truck implements Vehicle{
         this.mileage = mileage;
     }
 
-    int getVIN(){
+    public int getVIN(){
         return VIN;
     }
 
