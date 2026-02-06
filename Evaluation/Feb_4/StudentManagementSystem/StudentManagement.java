@@ -42,11 +42,12 @@ public class StudentManagement {
                     service.deleteStudentByID(sc.nextInt());
                     break;
 
-                case 5:
-                    System.exit(0);
-                    break;
                 default:
                     System.out.println("Invalid choice");
+                    break;
+
+                case 5:
+                    System.exit(0);
             }
         }
     }
