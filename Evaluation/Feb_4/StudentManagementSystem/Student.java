@@ -8,10 +8,15 @@ public class Student {
     private String name;
     private String grade;
 
-    static Scanner input = new Scanner(System.in);
+    private final Scanner input;
 
-    public Student() {}
+    public Student() {
+        this(new Scanner(System.in));
+    }
 
+    public Student(Scanner input) {
+        this.input = input;
+    }
     public int getStudentID() {
         return studentID;
     }
