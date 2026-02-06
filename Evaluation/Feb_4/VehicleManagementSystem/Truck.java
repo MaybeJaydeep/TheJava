@@ -22,10 +22,9 @@ public class Truck implements Vehicle{
     public int getVIN(){
         return VIN;
     }
-
-    @Override
-    public boolean getMileage() {
-        return mileage >= 10000;
+    
+    public String getManufacturer(){
+        return manufacturer;
     }
 
     @Override
@@ -35,12 +34,17 @@ public class Truck implements Vehicle{
 
     @Override
     public void run() throws GetServicedException {
-    if(getMileage()){
+    if(needsService()){
         throw new GetServicedException("Get your truck serviced...");
     }
         System.out.println("Truck started...");
         GPS gps = () ->  System.out.println("Latitude: 54.52665, Longitude: -88.83006");
         gps.gps();
+    }
+
+    @Override
+    public boolean needsService() {
+        return mileage >= 10000;
     }
     
 }

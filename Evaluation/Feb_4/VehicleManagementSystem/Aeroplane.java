@@ -21,8 +21,12 @@ public class Aeroplane implements Vehicle{
         return VIN;
     }
 
+    public String getManufacturer(){
+        return manufacturer;
+    }
+
     @Override
-    public boolean getMileage() {
+    public boolean needsService() {
         return mileage >= 10000;
     }
 
@@ -33,7 +37,7 @@ public class Aeroplane implements Vehicle{
 
     @Override
     public void run() throws GetServicedException {
-        if(getMileage()) throw new GetServicedException("Plane needs to be Serviced...");
+        if(needsService()) throw new GetServicedException("Plane needs to be Serviced...");
         
         System.out.println("Plane started...");
         alt.height();
