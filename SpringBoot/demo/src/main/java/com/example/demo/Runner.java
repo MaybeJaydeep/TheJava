@@ -18,8 +18,15 @@ public class Runner implements CommandLineRunner {
         Users user = new Users();
         user.setUsername("admin");
         user.setPassword("admin");
-        userServices.saveUser(user);
-        System.out.println(toString(userServices.findByUsername("admin")));
+        user.setEmail("admin@gmail.com");
+
+        userServices.createUser(user);
+        System.out.println(toString(userServices.findByUsername(user.getUsername())));
+
+        userServices.updateUserName(user, "NotAdmin");
+        System.out.println(toString(userServices.findByUsername(user.getUsername())));
+
+
     }
 
     private String toString(Users admin) {
