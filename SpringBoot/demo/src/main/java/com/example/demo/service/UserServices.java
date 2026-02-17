@@ -22,6 +22,6 @@ public interface UserServices {
 
     Users updateUserName(Users user, String username);
 
-    void deleteUser(String username);
+    void deleteUser(Users user,String username);
 }
 

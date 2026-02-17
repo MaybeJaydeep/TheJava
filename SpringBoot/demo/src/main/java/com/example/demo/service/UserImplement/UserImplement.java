@@ -1,9 +1,14 @@
 package com.example.demo.service.UserImplement;
 
 import com.example.demo.Entity.Users;
+import com.example.demo.service.emailService.EmailService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import com.example.demo.Repository.UserRepository;
 import com.example.demo.service.UserServices;
+
+import java.time.LocalDate;
 
 /*
 
@@ -14,16 +19,19 @@ This is where implementation of the services happens
 
 @Service
 public class UserImplement implements UserServices {
+    private static final Logger log = LoggerFactory.getLogger(UserImplement.class);
 
     private final UserRepository userRepository;
+    private final EmailService emailService;
 
-    public UserImplement(UserRepository userRepository) {
+    public UserImplement(UserRepository userRepository, EmailService emailService) {
         this.userRepository = userRepository;
+        this.emailService = emailService;
     }
 
     @Override
     public Users findByUsername(String username) {
-        return userRepository.findById(username).orElse(null);
+        return null;
     }
 
     @Override
@@ -48,15 +56,24 @@ public class UserImplement implements UserServices {
     // CREATE
     @Override
     public Users createUser(Users user) {
-        if (userRepository.existsById(user.getUsername())) {
+        if (userRepository.existsById(user.getId())) {
             throw new RuntimeException("User already exists");
         }
-        return userRepository.save(user);
+        Users saved = userRepository.save(user);
+        if (saved.getBirthDate() != null &&
+                saved.getBirthDate().equals(LocalDate.now())) {
+            try {
+                emailService.sendBirthdayEmail_InlineHtml(saved);
+            } catch (Exception e) {
+                log.warn("Could not send birthday email on create: {}", e.getMessage());
+            }
+        }
+        return saved;
     }
 
     // UPDATE
     public Users updateUserName(Users user,String username) {
-        if (!userRepository.existsById(user.getUsername())) {
+        if (!userRepository.existsById(user.getId())) {
             throw new RuntimeException("User not found");
         }
         user.setUsername(username);
@@ -65,8 +82,8 @@ public class UserImplement implements UserServices {
 
     // DELETE
     @Override
-    public void deleteUser(String username) {
-        userRepository.deleteById(username);
+    public void deleteUser(Users user, String username) {
+        userRepository.deleteById(user.getId());
     }
 }
 
