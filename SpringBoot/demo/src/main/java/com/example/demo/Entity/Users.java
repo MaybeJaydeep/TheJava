@@ -4,21 +4,28 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
 @Setter
 @Getter
 @Table(name = "UserDetails")
-public class Users {
+public class Users{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String username;
     private String password;
-    @Column(nullable = true)
     private String email;
 
-    public Users(String username, String password, String email) {
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
+
+    public Users(String username, String password, String email,  LocalDate birthDate) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.birthDate = birthDate;
     }
     public Users() {}
 }

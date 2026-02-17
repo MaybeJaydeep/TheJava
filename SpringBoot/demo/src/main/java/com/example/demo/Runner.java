@@ -5,6 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import com.example.demo.service.UserServices;
 
+import java.time.LocalDate;
+
 @Component
 public class Runner implements CommandLineRunner {
 
@@ -18,14 +20,12 @@ public class Runner implements CommandLineRunner {
         Users user = new Users();
         user.setUsername("admin");
         user.setPassword("admin");
-        user.setEmail("admin@gmail.com");
+        user.setEmail("badaljaydeep@gmail.com");
+        LocalDate date = LocalDate.now();
+        user.setBirthDate(date);
 
         userServices.createUser(user);
         System.out.println(toString(userServices.findByUsername(user.getUsername())));
-
-        userServices.updateUserName(user, "NotAdmin");
-        System.out.println(toString(userServices.findByUsername(user.getUsername())));
-
 
     }
 
