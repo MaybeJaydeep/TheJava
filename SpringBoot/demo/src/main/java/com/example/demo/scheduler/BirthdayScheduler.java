@@ -26,7 +26,7 @@ public class BirthdayScheduler {
         this.emailService   = emailService;
     }
 
-    @Scheduled(cron = "0 0 8 * * ?") // Every day at 08:00 AM
+    @Scheduled(cron = "0 * * * * * ") // Every minute
     public void sendBirthdayEmails() {
         LocalDate today = LocalDate.now();
         int month = today.getMonthValue();

@@ -28,4 +28,5 @@ public interface UserRepository extends JpaRepository<Users, Long> {
     List<Users> findByBirthDate(@Param("month") int month,
                                @Param("day")   int day);
 
+    boolean existsByUsername(String username);
 }

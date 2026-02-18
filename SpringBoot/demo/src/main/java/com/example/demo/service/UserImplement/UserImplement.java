@@ -1,12 +1,13 @@
 package com.example.demo.service.UserImplement;
 
 import com.example.demo.Entity.Users;
+import com.example.demo.service.UserServices;
 import com.example.demo.service.emailService.EmailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import com.example.demo.Repository.UserRepository;
-import com.example.demo.service.UserServices;
+
 
 import java.time.LocalDate;
 
@@ -54,12 +55,14 @@ public class UserImplement implements UserServices {
     }
 
     // CREATE
-    @Override
-    public Users createUser(Users user) {
-        if (userRepository.existsById(user.getId())) {
+    public void createUser(Users user) {
+
+        if (userRepository.existsByUsername(user.getUsername())) {
             throw new RuntimeException("User already exists");
         }
+
         Users saved = userRepository.save(user);
+
         if (saved.getBirthDate() != null &&
                 saved.getBirthDate().equals(LocalDate.now())) {
             try {
@@ -68,7 +71,6 @@ public class UserImplement implements UserServices {
                 log.warn("Could not send birthday email on create: {}", e.getMessage());
             }
         }
-        return saved;
     }
 
     // UPDATE
