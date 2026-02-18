@@ -7,7 +7,6 @@ import jakarta.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.TemplateEngine;
 
 import java.io.UnsupportedEncodingException;
 
@@ -38,6 +37,8 @@ public class EmailService {
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
+
+        int counter = 0;
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(htmlBody, true);
@@ -50,25 +51,12 @@ public class EmailService {
             throws MessagingException {
 
 
-        String htmlBody = "<!DOCTYPE html>" +
-                "<html><body style='font-family:Arial,sans-serif;background:#f4f4f4;'>" +
-                "  <div style='max-width:560px;margin:40px auto;background:#fff;" +
-                "       border-radius:12px;overflow:hidden;'>" +
-                "    <div style='background:#6db33f;padding:32px;text-align:center;'>" +
-                "      <h1 style='color:#fff;margin:0;'>🎂 Happy Birthday!</h1>" +
-                "    </div>" +
-                "    <div style='padding:32px;'>" +
-                "      <p>Hello <strong>" + user.getUsername() + "</strong>,</p>" +
-                "      <p>Wishing you a wonderful birthday from all of us!</p>" +
-                "      <p>— The Team</p>" +
-                "    </div>" +
-                "  </div>" +
-                "</body></html>";
+        String htmlBody = STR."<!DOCTYPE html><html><body style='font-family:Arial,sans-serif;background:#f4f4f4;'>  <div style='max-width:560px;margin:40px auto;background:#fff;       border-radius:12px;overflow:hidden;'>    <div style='background:#6db33f;padding:32px;text-align:center;'>      <h1 style='color:#fff;margin:0;'>\uD83C\uDF82 Happy Birthday!</h1>    </div>    <div style='padding:32px;'>      <p>Hello <strong>\{user.getUsername()}</strong>,</p>      <p>Wishing you a wonderful birthday from all of us!</p>      <p>—Team Spark</p>  </div>  </div></body></html>";
 
 
         sendHtmlEmail(
                 user.getEmail(),
-                "🎂 Happy Birthday, " + user.getUsername() + "!",
+                STR."\uD83C\uDF82 Happy Birthday, \{user.getUsername()}!",
                 htmlBody
         );
     }

@@ -17,20 +17,17 @@ public class Runner implements CommandLineRunner {
     }
     @Override
     public void run(String... args) throws Exception {
+        LocalDate date;
         Users user = new Users();
-        user.setUsername("admin");
-        user.setPassword("admin");
-        user.setEmail("badaljaydeep@gmail.com");
-        LocalDate date = LocalDate.now();
+        user.setUsername("Jaydeep");
+        user.setPassword("Jaydeep");
+        user.setEmail("ditipatel160@gmail.com");
+        date = LocalDate.now();
         user.setBirthDate(date);
 
         userServices.createUser(user);
-        System.out.println(toString(userServices.findByUsername(user.getUsername())));
 
-    }
-
-    private String toString(Users admin) {
-        return admin.getUsername();
+        System.out.println("User created");
     }
 
 

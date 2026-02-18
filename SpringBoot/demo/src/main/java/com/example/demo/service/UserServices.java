@@ -18,10 +18,11 @@ public interface UserServices {
 
     Users findByEmailAndPassword(String email, String password);
 
-    Users createUser(Users user);
+    void createUser(Users user);
 
     Users updateUserName(Users user, String username);
 
     void deleteUser(Users user,String username);
+
 }
 
