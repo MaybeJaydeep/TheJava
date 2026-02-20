@@ -5,7 +5,6 @@ import com.example.demo.Entity.Users;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.Entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -29,4 +28,6 @@ public interface UserRepository extends JpaRepository<Users, Long> {
                                @Param("day")   int day);
 
     boolean existsByUsername(String username);
+
+
 }
