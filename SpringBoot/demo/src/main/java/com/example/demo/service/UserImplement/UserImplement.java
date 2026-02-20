@@ -74,7 +74,7 @@ public class UserImplement implements UserServices {
     }
 
     // UPDATE
-    public Users updateUserName(Users user,String username) {
+    public Users updateUserName(Users user, String username) {
         if (!userRepository.existsById(user.getId())) {
             throw new RuntimeException("User not found");
         }
@@ -87,5 +87,8 @@ public class UserImplement implements UserServices {
     public void deleteUser(Users user, String username) {
         userRepository.deleteById(user.getId());
     }
+
+    
+
 }
 
