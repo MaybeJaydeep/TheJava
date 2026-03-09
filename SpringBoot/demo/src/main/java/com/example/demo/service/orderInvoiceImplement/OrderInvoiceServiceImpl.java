@@ -42,6 +42,7 @@ public class OrderInvoiceServiceImpl implements OrderInvoiceService {
 
         Order order = getManagedOrder(orderId);
 
+
         Invoice invoice = new Invoice();
         invoice.setQuantity(quantity);
         invoice.setUnitPrice(unitPrice);
